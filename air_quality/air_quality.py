@@ -7,6 +7,7 @@ reset_pin = None
 i2c = busio.I2C(board.SCL, board.SDA, frequency=100000)
 pm25 = PM25_I2C(i2c, reset_pin)
 
+
 def get_air_quality():
     try:
         aqdata = pm25.read()
@@ -22,7 +23,7 @@ def get_air_quality():
             "particles_10um": aqdata["particles 10um"],
             "particles_25um": aqdata["particles 25um"],
             "particles_50um": aqdata["particles 50um"],
-            "particles_100um": aqdata["particles 100um"]
+            "particles_100um": aqdata["particles 100um"],
         }
     except RuntimeError:
         return None
